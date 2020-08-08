@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+    installserver:
+        build: .
+        container_name: mdmInstallWeb
+        volumes:
+          - ./webFiles/:/usr/share/nginx/html:ro
+        ports:
+          - '0.0.0.0:8443:443'
+        entrypoint: ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
